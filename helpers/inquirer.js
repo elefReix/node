@@ -64,6 +64,38 @@ const leerInput = async (message) => {
     return desc
 }
 
+const selectCliente = async (message) => {
+    let clientes = [
+        {
+            type:'input',
+            name:'cliente',
+            message,
+            validate( value ) {
+                return parseInt(value)<=0? 'Debe escribir un numero de cliente ': true
+            }
+        }
+
+    ]
+    const {cliente} = await inquirer.prompt(clientes)
+    return cliente;
+}
+
+const selectRecolector = async (message) => {
+    let recolectores = [
+        {
+            type:'input',
+            name:'recolector',
+            message,
+            validate( value ) {
+                return parseInt(value)<=0? 'Debe escribir un numero de recolector ': true
+            }
+        }
+
+    ]
+    const {recolector} = await inquirer.prompt(recolectores)
+    return recolector;
+}
+
 const pause = async () =>{
     let preguntas = [
         {
@@ -76,4 +108,10 @@ const pause = async () =>{
     await inquirer.prompt(preguntas)
 }
 
-module.exports = { inquireMenu,pause,leerInput }
+module.exports = { 
+    inquireMenu,
+    pause,
+    leerInput,
+    selectCliente,
+    selectRecolector
+ }
