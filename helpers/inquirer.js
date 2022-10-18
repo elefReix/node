@@ -71,7 +71,7 @@ const selectCliente = async (message) => {
             name:'cliente',
             message,
             validate( value ) {
-                return parseInt(value)<=0? 'Debe escribir un numero de cliente ': true
+                return parseInt(value)<=0? 'No se encontro el Cliente ': true
             }
         }
 
@@ -79,6 +79,7 @@ const selectCliente = async (message) => {
     const {cliente} = await inquirer.prompt(clientes)
     return cliente;
 }
+
 
 const selectRecolector = async (message) => {
     let recolectores = [
@@ -94,6 +95,71 @@ const selectRecolector = async (message) => {
     ]
     const {recolector} = await inquirer.prompt(recolectores)
     return recolector;
+}
+
+const selectFecha = async (message) =>{
+    let fecha_input = [
+        {
+            type:'input',
+            name:'fecha',
+            message,
+            validate( value_date ) {
+                try {
+                    new Date(value_date)
+                    return true
+                } catch (error) {
+                    return 'Debe escribir la fecha en formato yyyy-MM-dd'
+                }
+            }
+        }
+    ] 
+    const {fecha} = await inquirer.prompt(fecha_input)
+    return fecha
+}
+
+const selectIdManifiesto = async  (message) =>{
+    let id_input = [
+        {
+            type:'input',
+            name:'id',
+            message,
+            validate(value){
+                return parseInt(value) > 0 
+            }
+        }
+    ]
+    const {id} = await inquirer.prompt(id_input)
+    return id
+}
+
+const selectRuta = async  (message) =>{
+    let ruta_input = [
+        {
+            type:'input',
+            name:'ruta',
+            message,
+            validate(value){
+                return parseInt(value) > 0 
+            }
+        }
+    ]
+    const {ruta} = await inquirer.prompt(ruta_input)
+    return ruta
+}
+
+const selectSemana = async  (message) =>{
+    let semana_input = [
+        {
+            type:'input',
+            name:'semana',
+            message,
+            validate(value){
+                return parseInt(value) > 0 
+            }
+        }
+    ]
+    const {semana} = await inquirer.prompt(semana_input)
+    return semana
 }
 
 const pause = async () =>{
@@ -113,5 +179,9 @@ module.exports = {
     pause,
     leerInput,
     selectCliente,
-    selectRecolector
+    selectRecolector,
+    selectFecha,
+    selectIdManifiesto,
+    selectRuta,
+    selectSemana
  }

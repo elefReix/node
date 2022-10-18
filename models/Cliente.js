@@ -57,6 +57,10 @@ class Cliente {
             return this._cliente? this._cliente : `No se encontro el cliente con id ${id} favor de darlo de alta`
         }
 
+        setCliente(cliente){
+            this._cliente = cliente
+        }
+
         constructor(){
             this._cliente = {}
         }
