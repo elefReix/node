@@ -1,8 +1,9 @@
 const fs = require('fs')
 
 const guardar = (data) =>{
-    const archivo = 'db/data.json'
-    fs.writeFileSync(archivo,data)
+    const path = 'db/manifiesto.json'
+    // fs.writeFileSync(archivo,data)
+    fs.appendFileSync(path,`${data},`)
 }
 
 module.exports = {

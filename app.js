@@ -65,6 +65,9 @@ const main = async () =>{
                 manifiesto.setRuta(rutaFound)
                 const semana = await selectSemana(`Escribe la  el # semana : `)
                 manifiesto.setSemana(semana)
+                guardar(JSON.stringify(manifiesto));
+                console.log(`================>>Terminamos de guardar<<==========================`.red);
+                
                 console.log(manifiesto)
                 break;
             case '2':
